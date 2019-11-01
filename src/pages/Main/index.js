@@ -3,7 +3,7 @@ import { Title } from './styles';
 
 function Main() {
   return (
-    <Title>
+    <Title error>
       Main
       <small>Subtitle</small>
     </Title>
