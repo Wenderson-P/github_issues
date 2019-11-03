@@ -16,7 +16,8 @@ export const Form = styled.form`
 
   input {
     flex: 1;
-    border: 1px solid #eee;
+    border: 1px solid;
+    border-color: ${props => (props.error ? 'red' : '#eee')};
     padding: 10px 15px;
     border-radius: 4px;
     font-size: 16px;
@@ -37,8 +38,8 @@ export const SubmitButton = styled.button.attrs(props => ({
   justify-content: center;
   align-items: center;
 
-  &[disabled] {
-    cursor: not-allowed;
+  & [disabled] {
+    cursor: not - allowed;
     opacity: 0.6;
   }
 
@@ -58,7 +59,7 @@ export const List = styled.ul`
     padding: 15px 0;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space - between;
     align-items: center & + li {
       border-top: 1px solid #eee;
     }
