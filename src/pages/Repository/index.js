@@ -10,6 +10,7 @@ export default class Repository extends Component {
     repository: {},
     issues: [],
     loading: true,
+    filters: [{ state: 'all' }, { state: 'open' }, { state: 'close' }],
   };
 
   async componentDidMount() {
