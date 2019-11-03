@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import api from '../../services/api';
-import { Loading, Owner, IssueList } from './styles';
+import { Loading, Owner, IssueList, IssueFilter } from './styles';
 import Container from '../../components/Container/index';
 
 export default class Repository extends Component {
@@ -10,7 +10,11 @@ export default class Repository extends Component {
     repository: {},
     issues: [],
     loading: true,
-    filters: [{ state: 'all' }, { state: 'open' }, { state: 'close' }],
+    filters: [
+      { state: 'all', label: 'Todas' },
+      { state: 'open', label: 'Abertas' },
+      { state: 'closed', label: 'Fechadas' },
+    ],
   };
 
   async componentDidMount() {
@@ -35,7 +39,7 @@ export default class Repository extends Component {
   }
 
   render() {
-    const { repository, issues, loading } = this.state;
+    const { repository, issues, loading, filters } = this.state;
 
     if (loading) {
       return <Loading>Carregando :)</Loading>;
@@ -49,6 +53,13 @@ export default class Repository extends Component {
           <p>{repository.description}</p>
         </Owner>
         <IssueList>
+          <IssueFilter>
+            <select>
+              {filters.map(filter => (
+                <option value={filter.state}>{filter.label}</option>
+              ))}
+            </select>
+          </IssueFilter>
           {issues.map(issue => (
             <li key={String(issue.id)}>
               <img src={issue.user.avatar_url} alt={issue.user.login} />

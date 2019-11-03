@@ -93,3 +93,16 @@ export const IssueList = styled.ul`
     }
   }
 `;
+
+export const IssueFilter = styled.div`
+  display: flex;
+  justify-content: center;
+  padding-bottom: 15px;
+  select {
+    border-radius: 4px;
+    background-color: #7159c1;
+    padding: 5px;
+    color: white;
+    font-size: 14px;
+  }
+`;
