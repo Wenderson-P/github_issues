@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 
 import { FaGithubAlt, FaPlus, FaSpinner } from 'react-icons/fa';
 
+import { Link } from 'react-router-dom';
 import api from '../../services/api';
 
-import { Container, Form, SubmitButton,List } from './styles';
+import { Container, Form, SubmitButton, List } from './styles';
 
 export default class Main extends Component {
   state = {
@@ -13,19 +14,19 @@ export default class Main extends Component {
     loading: false,
   };
 
-  //Load data from localStorage
-  componentDidMount(){
+  // Load data from localStorage
+  componentDidMount() {
     const repositories = localStorage.getItem('repositories');
-    if(repositories){
-      this.setState({repositories: JSON.parse(repositories)})
+    if (repositories) {
+      this.setState({ repositories: JSON.parse(repositories) });
     }
   }
 
-  //Save data from localStorage
-  componentDidUpdate(_,prevState){
-    const {repositories} = this.state;
-    if(prevState.repositories !== repositories){
-      localStorage.setItem('repositories', JSON.stringify(repositories))
+  // Save data from localStorage
+  componentDidUpdate(_, prevState) {
+    const { repositories } = this.state;
+    if (prevState.repositories !== repositories) {
+      localStorage.setItem('repositories', JSON.stringify(repositories));
     }
   }
 
@@ -70,15 +71,17 @@ export default class Main extends Component {
             {loading ? (
               <FaSpinner color="#FFF" size={14} />
             ) : (
-                <FaPlus color="#FFF" size={14} />
-              )}
+              <FaPlus color="#FFF" size={14} />
+            )}
           </SubmitButton>
         </Form>
         <List>
           {repositories.map(repository => (
             <li key={repository.name}>
               <span>{repository.name}</span>
-              <a href="">Detalhes</a>
+              <Link to={`/repository/${encodeURIComponent(repository.name)}`}>
+                Detalhes
+              </Link>
             </li>
           ))}
         </List>
