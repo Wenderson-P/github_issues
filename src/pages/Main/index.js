@@ -36,7 +36,7 @@ export default class Main extends Component {
   };
 
   render() {
-    const { newRepo, loading } = this.state;
+    const { newRepo, repositories, loading } = this.state;
     return (
       <Container>
         <h1>
@@ -54,10 +54,18 @@ export default class Main extends Component {
             {loading ? (
               <FaSpinner color="#FFF" size={14} />
             ) : (
-              <FaPlus color="#FFF" size={14} />
-            )}
+                <FaPlus color="#FFF" size={14} />
+              )}
           </SubmitButton>
         </Form>
+        <List>
+          {repositories.map(repository => (
+            <li key={repository.name}>
+              <span>{repository.name}</span>
+              <a href="">Detalhes</a>
+            </li>
+          ))}
+        </List>
       </Container>
     );
   }
