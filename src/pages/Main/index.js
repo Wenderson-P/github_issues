@@ -52,10 +52,11 @@ export default class Main extends Component {
       });
     } catch (error) {
       this.setState({ error: true });
+    } finally {
+      this.setState({
+        loading: false,
+      });
     }
-    this.setState({
-      loading: false,
-    });
   };
 
   render() {
