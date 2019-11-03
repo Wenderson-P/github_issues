@@ -15,17 +15,19 @@ export default class Repository extends Component {
       { state: 'open', label: 'Abertas' },
       { state: 'closed', label: 'Fechadas' },
     ],
+    filterSelected: 'all',
   };
 
   async componentDidMount() {
     const { match } = this.props;
     const repoName = decodeURIComponent(match.params.repository);
+    const { filterSelected } = this.state;
     const [repository, issues] = await Promise.all([
       api.get(`/repos/${repoName}`),
       api.get(`/repos/${repoName}/issues`),
       {
         params: {
-          state: 'open',
+          state: filterSelected,
           per_page: 5,
         },
       },
@@ -36,6 +38,28 @@ export default class Repository extends Component {
       issues: issues.data,
       loading: false,
     });
+  }
+
+  loadIssues = async () => {
+    const { match } = this.props;
+    const { filterSelected } = this.state;
+
+    const repoName = decodeURIComponent(match.params.repository);
+
+    const response = await api.get(`/repos/${repoName}/issues`, {
+      params: {
+        state: filterSelected,
+        per_page: 5,
+      },
+    });
+
+    this.setState({ issues: response.data });
+  };
+
+  handleFilterChange(e) {
+    const optionSelected = e.target.value;
+    this.setState({ filterSelected: optionSelected });
+    this.loadIssues();
   }
 
   render() {
@@ -54,7 +78,7 @@ export default class Repository extends Component {
         </Owner>
         <IssueList>
           <IssueFilter>
-            <select>
+            <select onChange={e => this.handleFilterChange(e)}>
               {filters.map(filter => (
                 <option value={filter.state}>{filter.label}</option>
               ))}

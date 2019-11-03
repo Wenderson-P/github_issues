@@ -42,7 +42,6 @@ export const Owner = styled.header`
 `;
 
 export const IssueList = styled.ul`
-  padding-top: 30px;
   margin-top: 30px;
   border-top: 1px solid #eee;
   list-style: none;
@@ -97,7 +96,7 @@ export const IssueList = styled.ul`
 export const IssueFilter = styled.div`
   display: flex;
   justify-content: center;
-  padding-bottom: 15px;
+  padding: 10px;
   select {
     border-radius: 4px;
     background-color: #7159c1;
