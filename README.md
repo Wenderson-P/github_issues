@@ -2,7 +2,7 @@
 
 > This is a study project made with react. It was used Styled components, and for linting eslint and prettier.
 
-<img src="https://user-images.githubusercontent.com/52503774/68352142-477ae000-00e4-11ea-8a56-35d6398fa1e1.png" />
+<img src="https://user-images.githubusercontent.com/52503774/68357231-659c0c80-00f3-11ea-88aa-acb8c99d9129.gif" />
 
 ## Installation
 ```
