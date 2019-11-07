@@ -5,7 +5,7 @@ import { FaGithubAlt, FaPlus, FaSpinner } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import api from '../../services/api';
 import Container from '../../components/Container/index';
-import { Form, SubmitButton, List } from './styles';
+import { Form, SubmitButton, List, RemoveButton } from './styles';
 
 export default class Main extends Component {
   state = {
@@ -44,7 +44,7 @@ export default class Main extends Component {
       const { newRepo, repositories } = this.state;
 
       if (repositories.find(rep => rep.name === newRepo)) {
-        throw new Error('Repositório duplicado');
+        throw Error('Repositório duplicado');
       }
       const response = await api.get(`/repos/${newRepo}`);
 
@@ -63,6 +63,13 @@ export default class Main extends Component {
         loading: false,
       });
     }
+  };
+
+  handleDelete = repository => {
+    const { repositories } = this.state;
+    this.setState({
+      repositories: repositories.filter(rep => rep !== repository),
+    });
   };
 
   render() {
@@ -84,8 +91,8 @@ export default class Main extends Component {
             {loading ? (
               <FaSpinner color="#FFF" size={14} />
             ) : (
-              <FaPlus color="#FFF" size={14} />
-            )}
+                <FaPlus color="#FFF" size={14} />
+              )}
           </SubmitButton>
         </Form>
         <List>
@@ -95,6 +102,9 @@ export default class Main extends Component {
               <Link to={`/repository/${encodeURIComponent(repository.name)}`}>
                 Detalhes
               </Link>
+              <RemoveButton onClick={() => this.handleDelete(repository)}>
+                Remover
+              </RemoveButton>
             </li>
           ))}
         </List>

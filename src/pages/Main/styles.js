@@ -71,3 +71,11 @@ export const List = styled.ul`
     }
   }
 `;
+
+export const RemoveButton = styled.button`
+  margin-left: 15px;
+  background: none;
+  border: none;
+  color: #112d4e;
+  margin-left: 20px;
+`;
