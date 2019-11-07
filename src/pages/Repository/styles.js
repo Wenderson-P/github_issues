@@ -16,7 +16,7 @@ export const Owner = styled.header`
   align-items: center;
 
   a {
-    color: #7159c1;
+    color: #112d4e;
     font-size: 16px;
     text-decoration: none;
   }
@@ -71,7 +71,7 @@ export const IssueList = styled.ul`
         text-decoration: none;
         color: #333;
         &:hover {
-          color: #7159c1;
+          color: #112d4e;
         }
       }
       span {
@@ -99,7 +99,7 @@ export const IssueFilter = styled.div`
   padding: 10px;
   select {
     border-radius: 4px;
-    background-color: #7159c1;
+    background-color: #112d4e;
     padding: 5px;
     color: white;
     font-size: 14px;
