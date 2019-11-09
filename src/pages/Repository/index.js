@@ -25,13 +25,12 @@ export default class Repository extends Component {
     const { filterSelected } = this.state;
     const [repository, issues] = await Promise.all([
       api.get(`/repos/${repoName}`),
-      api.get(`/repos/${repoName}/issues`),
-      {
+      api.get(`/repos/${repoName}/issues`, {
         params: {
           state: filterSelected,
           per_page: 5,
         },
-      },
+      }),
     ]);
 
     this.setState({
