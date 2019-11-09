@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import api from '../../services/api';
-import { Loading, Owner, IssueList, IssueFilter } from './styles';
+import { Loading, Owner, IssueList, IssueFilter, PageActions } from './styles';
 import Container from '../../components/Container/index';
 
 export default class Repository extends Component {
@@ -16,6 +16,7 @@ export default class Repository extends Component {
       { state: 'closed', label: 'Fechadas' },
     ],
     filterSelected: 'all',
+    page: 1,
   };
 
   async componentDidMount() {
@@ -63,7 +64,7 @@ export default class Repository extends Component {
   }
 
   render() {
-    const { repository, issues, loading, filters } = this.state;
+    const { repository, issues, loading, filters, page } = this.state;
 
     if (loading) {
       return <Loading>Carregando :)</Loading>;
@@ -99,6 +100,11 @@ export default class Repository extends Component {
             </li>
           ))}
         </IssueList>
+        <PageActions>
+          <button type="button">Anterior</button>
+          <span>Página {page}</span>
+          <button type="button">Próxima</button>
+        </PageActions>
       </Container>
     );
   }
