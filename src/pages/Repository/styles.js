@@ -105,3 +105,17 @@ export const IssueFilter = styled.div`
     font-size: 14px;
   }
 `;
+
+export const PageActions = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+
+  button {
+    padding: 10px;
+    border: 0;
+    outline: 0;
+    border-radius: 5px;
+  }
+`;
