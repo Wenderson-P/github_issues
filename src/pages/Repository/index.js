@@ -109,7 +109,11 @@ export default class Repository extends Component {
           ))}
         </IssueList>
         <PageActions>
-          <button type="button" onClick={() => this.handlePageChange(page - 1)}>
+          <button
+            type="button"
+            onClick={() => this.handlePageChange(page - 1)}
+            disabled={page === 1}
+          >
             Anterior
           </button>
           <span>Página {page}</span>
