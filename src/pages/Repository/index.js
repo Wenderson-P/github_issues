@@ -43,7 +43,7 @@ export default class Repository extends Component {
 
   loadIssues = async () => {
     const { match } = this.props;
-    const { filterSelected } = this.state;
+    const { filterSelected, page } = this.state;
 
     const repoName = decodeURIComponent(match.params.repository);
 
@@ -51,6 +51,7 @@ export default class Repository extends Component {
       params: {
         state: filterSelected,
         per_page: 5,
+        page,
       },
     });
 
@@ -62,6 +63,13 @@ export default class Repository extends Component {
     this.setState({ filterSelected: optionSelected });
     this.loadIssues();
   }
+
+  handlePageChange = async page => {
+    await this.setState({
+      page,
+    });
+    this.loadIssues();
+  };
 
   render() {
     const { repository, issues, loading, filters, page } = this.state;
@@ -101,9 +109,14 @@ export default class Repository extends Component {
           ))}
         </IssueList>
         <PageActions>
-          <button type="button">Anterior</button>
+          <button type="button" onClick={() => this.handlePageChange(page - 1)}>
+            Anterior
+          </button>
           <span>Página {page}</span>
-          <button type="button">Próxima</button>
+          <button type="button" onClick={() => this.handlePageChange(page + 1)}>
+            {' '}
+            Próxima
+          </button>
         </PageActions>
       </Container>
     );
