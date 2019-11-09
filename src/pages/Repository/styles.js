@@ -117,5 +117,9 @@ export const PageActions = styled.div`
     border: 0;
     outline: 0;
     border-radius: 5px;
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
   }
 `;
