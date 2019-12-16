@@ -58,12 +58,13 @@ export const List = styled.ul`
   li {
     padding: 15px 0;
     display: flex;
-    flex-direction: row;
-    justify-content: space - between;
     align-items: center & + li {
       border-top: 1px solid #eee;
     }
-
+    span {
+      flex: 1;
+      text-transform: capitalize;
+    }
     a {
       color: #112d4e;
       text-decoration: none;
