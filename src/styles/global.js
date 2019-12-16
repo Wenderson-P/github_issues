@@ -12,7 +12,10 @@ export default createGlobalStyle`
   }
 
   body{
-    background: #112d4e;
+
+    background: #1488CC;
+    background: -webkit-linear-gradient(0deg, #2B32B2, rgba(10,123,173,1));
+    background: linear-gradient(10deg, #2B32B2 0%,rgba(10,123,173,1) 100%);
     -webkit-font-smoothing: antialiased !important;
   }
 
