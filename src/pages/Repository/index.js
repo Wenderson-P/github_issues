@@ -64,18 +64,18 @@ export default class Repository extends Component {
     this.setState({ issues: response.data });
   };
 
-  handleFilterChange(e) {
-    const optionSelected = e.target.value;
-    this.setState({ filterSelected: optionSelected });
-    this.loadIssues();
-  }
-
   handlePageChange = async page => {
     await this.setState({
       page,
     });
     this.loadIssues();
   };
+
+  async handleFilterChange(e) {
+    const optionSelected = e.target.value;
+    await this.setState({ filterSelected: optionSelected });
+    this.loadIssues();
+  }
 
   render() {
     const { repository, issues, loading, filters, page } = this.state;
