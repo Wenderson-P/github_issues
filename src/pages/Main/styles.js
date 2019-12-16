@@ -28,7 +28,7 @@ export const SubmitButton = styled.button.attrs(props => ({
   type: 'submit',
   disabled: props.loading,
 }))`
-  background: #112d4e;
+  background: #175cb0;
   border: 0;
   padding: 0 15px;
   margin-left: 10px;

@@ -16,7 +16,7 @@ export const Owner = styled.header`
   align-items: center;
 
   a {
-    color: #112d4e;
+    color: #175cb0;
     font-size: 16px;
     text-decoration: none;
   }
@@ -46,6 +46,7 @@ export const IssueList = styled.ul`
   border-top: 1px solid #eee;
   list-style: none;
   li {
+    margin-bottom: 8px;
     display: flex;
     padding: 15px 10px;
     border: 1px solid #eee;
@@ -71,7 +72,7 @@ export const IssueList = styled.ul`
         text-decoration: none;
         color: #333;
         &:hover {
-          color: #2b32b2;
+          color: #175cb0;
         }
       }
     }
@@ -101,7 +102,7 @@ export const IssueFilter = styled.div`
   padding: 10px;
   select {
     border-radius: 4px;
-    background-color: #112d4e;
+    background-color: #2853b1;
     padding: 5px;
     color: white;
     font-size: 14px;
