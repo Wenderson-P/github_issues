@@ -111,7 +111,7 @@ export const IssueFilter = styled.div`
 
 export const PageActions = styled.div`
   display: flex;
-  justify-content: space - between;
+  justify-content: space-between;
   align-items: center;
   padding: 10px;
 
@@ -123,7 +123,7 @@ export const PageActions = styled.div`
     font-weight: 600;
     &: disabled {
       opacity: 0.4;
-      cursor: not - allowed;
+      cursor: not-allowed;
     }
   }
 `;
