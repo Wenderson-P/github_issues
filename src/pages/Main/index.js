@@ -5,7 +5,7 @@ import { FaGithubAlt, FaPlus, FaSpinner } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import api from '../../services/api';
 import Container from '../../components/Container/index';
-import { Form, SubmitButton, List, RemoveButton } from './styles';
+import { Form, SubmitButton, List, RemoveButton, Error } from './styles';
 
 export default class Main extends Component {
   state = {
@@ -13,6 +13,7 @@ export default class Main extends Component {
     repositories: [],
     loading: false,
     error: false,
+    errorMessage: '',
   };
 
   // Load data from localStorage
@@ -37,17 +38,16 @@ export default class Main extends Component {
 
   handleSubmit = async e => {
     e.preventDefault();
-
     try {
-      this.setState({ loading: true });
+      this.setState({ loading: true, error: false, errorMessage: '' });
       e.preventDefault();
       const { newRepo, repositories } = this.state;
 
       if (repositories.find(rep => rep.name === newRepo)) {
-        throw Error('Repositório duplicado');
+        await this.setState({ errorMessage: 'O Repositório já foi inserido' });
+        throw Error('O Repositório duplicado');
       }
       const response = await api.get(`/repos/${newRepo}`);
-
       const data = {
         name: response.data.full_name,
       };
@@ -55,9 +55,18 @@ export default class Main extends Component {
         repositories: [...repositories, data],
         newRepo: '',
         error: false,
+        errorMessage: '',
       });
     } catch (error) {
-      this.setState({ error: true });
+      const { errorMessage } = this.state;
+      this.setState({
+        error: true,
+      });
+      if (errorMessage.length === 0) {
+        this.setState({
+          errorMessage: 'Esse repositório não existe',
+        });
+      }
     } finally {
       this.setState({
         loading: false,
@@ -73,13 +82,14 @@ export default class Main extends Component {
   };
 
   render() {
-    const { newRepo, repositories, loading, error } = this.state;
+    const { newRepo, repositories, loading, error, errorMessage } = this.state;
     return (
       <Container>
         <h1>
           <FaGithubAlt />
           Repositórios
         </h1>
+        <Error>{error && errorMessage}</Error>
         <Form onSubmit={this.handleSubmit} error={error}>
           <input
             type="text"
@@ -92,8 +102,8 @@ export default class Main extends Component {
             {loading ? (
               <FaSpinner color="#FFF" size={14} />
             ) : (
-              <FaPlus color="#FFF" size={14} />
-            )}
+                <FaPlus color="#FFF" size={14} />
+              )}
           </SubmitButton>
         </Form>
         <List>

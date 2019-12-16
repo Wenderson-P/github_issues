@@ -8,9 +8,15 @@ const rotate = keyframes`
     transform: rotate(360deg);
   }
 `;
+export const Error = styled.span`
+  display: flex;
+  margin-top: 25px;
+  margin-bottom: 2px;
+  color: red;
+  opacity: 0.7;
+`;
 
 export const Form = styled.form`
-  margin-top: 30px;
   display: flex;
   flex-direction: row;
 
