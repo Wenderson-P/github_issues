@@ -84,6 +84,7 @@ export default class Main extends Component {
           <input
             type="text"
             placeholder="Adicionar repositório"
+            title="Exemplo: facebook/react"
             value={newRepo}
             onChange={this.handleInputChange}
           />
@@ -91,8 +92,8 @@ export default class Main extends Component {
             {loading ? (
               <FaSpinner color="#FFF" size={14} />
             ) : (
-                <FaPlus color="#FFF" size={14} />
-              )}
+              <FaPlus color="#FFF" size={14} />
+            )}
           </SubmitButton>
         </Form>
         <List>
