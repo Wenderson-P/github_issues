@@ -88,7 +88,9 @@ export default class Repository extends Component {
           <IssueFilter>
             <select onChange={e => this.handleFilterChange(e)}>
               {filters.map(filter => (
-                <option value={filter.state}>{filter.label}</option>
+                <option key={filter.label} value={filter.state}>
+                  {filter.label}
+                </option>
               ))}
             </select>
           </IssueFilter>
