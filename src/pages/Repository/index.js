@@ -2,7 +2,14 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import api from '../../services/api';
-import { Loading, Owner, IssueList, IssueFilter, PageActions } from './styles';
+import {
+  Loading,
+  Owner,
+  IssueList,
+  IssueFilter,
+  PageActions,
+  IssueBadge,
+} from './styles';
 import Container from '../../components/Container/index';
 
 export default class Repository extends Component {
@@ -101,7 +108,9 @@ export default class Repository extends Component {
                 <strong>
                   <a href={issue.html_url}>{issue.title}</a>
                   {issue.labels.map(label => (
-                    <span key={String(label.id)}>{label.name}</span>
+                    <IssueBadge badgeColor={label.color} key={String(label.id)}>
+                      {label.name}
+                    </IssueBadge>
                   ))}
                 </strong>
                 <p>{issue.user.login}</p>

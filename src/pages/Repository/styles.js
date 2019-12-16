@@ -71,18 +71,8 @@ export const IssueList = styled.ul`
         text-decoration: none;
         color: #333;
         &:hover {
-          color: #112d4e;
+          color: #2b32b2;
         }
-      }
-      span {
-        background: #eee;
-        color: #333;
-        border-radius: 2px;
-        font-size: 12px;
-        font-weight: 600;
-        height: 20px;
-        padding: 3px 4px;
-        margin-left: 10px;
       }
     }
     p {
@@ -91,6 +81,17 @@ export const IssueList = styled.ul`
       color: #999;
     }
   }
+`;
+
+export const IssueBadge = styled.span`
+  background-color: #${props => props.badgeColor || '333'};
+  color: #333;
+  border-radius: 2px;
+  font-size: 12px;
+  font-weight: 600;
+  height: 20px;
+  padding: 3px 4px;
+  margin-left: 10px;
 `;
 
 export const IssueFilter = styled.div`
@@ -110,7 +111,7 @@ export const IssueFilter = styled.div`
 
 export const PageActions = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space - between;
   align-items: center;
   padding: 10px;
 
@@ -120,9 +121,9 @@ export const PageActions = styled.div`
     outline: 0;
     border-radius: 5px;
     font-weight: 600;
-    &:disabled {
+    &: disabled {
       opacity: 0.4;
-      cursor: not-allowed;
+      cursor: not - allowed;
     }
   }
 `;
