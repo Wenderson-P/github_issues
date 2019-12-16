@@ -92,6 +92,7 @@ export const IssueBadge = styled.span`
   height: 20px;
   padding: 3px 4px;
   margin-left: 10px;
+  box-shadow: 1px 1.5px rgba(27, 31, 35, 0.15);
 `;
 
 export const IssueFilter = styled.div`
